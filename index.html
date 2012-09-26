@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>Plugins</title>
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/rightchoise.css">
+	<link rel="stylesheet" href="css/selectbox.css">
+</head>
+<body>
+	<form action="#" class="frm">
+		<h1>Checkbox</h1>
+			<input type="checkbox" name="foo1" id="foo1" />
+			<input type="checkbox" name="foo2" id="foo2" checked/>
+			<input type="checkbox" name="foo3" id="foo3" disabled/>
+
+		<h1>Radio</h1>
+			<input type="radio" name="bar" id="bar1" />
+			<input type="radio" name="bar" id="bar2" checked/>
+			<input type="radio" name="bar" id="bar3" disabled/>
+
+		<h1>Selectbox</h1>
+			<select name="age" id="age">
+				<option value="1">1 ano</option>
+				<option value="2">2 anos</option>
+				<option value="3">3 anos</option>
+				<option value="4">4 anos</option>
+				<option value="5">5 anos</option>
+				<option value="6">6 anos</option>
+			</select>
+	</form>
+
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+	<script type="text/javascript" src="js/rightchoice.js"></script>
+	<script type="text/javascript" src="js/selectbox.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		doTheMagic = function(){
+			$('input[type=checkbox], input[type=radio]').rightChoice();
+
+			$('select').selectbox();
+		}
+		doTheMagic();
+		console.log('page ready');
+	});
+	</script>
+</body>
+</html>
