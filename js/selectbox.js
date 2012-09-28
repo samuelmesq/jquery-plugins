@@ -42,7 +42,7 @@
 		});
 
 		if ($this.prop("disabled")) {
-			$this.prop("disabled", true).parent().find(".styleSelect").addClass("disabled");
+			$this.parent().find(".styleSelect").addClass("disabled");
 		}
 
 	};
