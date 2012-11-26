@@ -1,27 +1,36 @@
+@import "../../../shared/moreless/more";
 *{
 	margin: 0;
 	padding: 0;
 }
-
+@normal: #000;
+@hover: #880055;
 body{
-	margin: 150px;
+	font-family: Arial, sans-serif;
+	background: #62969b;
+	width: 900px;
+	margin: 15px auto;
+
 }
 
 /*============================
 NORMAL
 ============================*/
 .selectbox{
-	background: #069;
-	line-height: 30px;
-	width: 200px;
 	position: relative;
 	overflow:  hidden;
+	float: left;
+	margin-right: 50px;
+
 	//ACTIVE
 	&.active{
-		background: #079;
 		z-index: 1;
 		overflow: visible;
-
+		span{
+			background: lighten(@normal, 15%);
+			.borderRadius(5px 5px 0 0);
+			border-bottom: none;
+		}
 		ul{
 			opacity: 1;
 		}
@@ -29,9 +38,29 @@ NORMAL
 
 	span{
 		display: block;
-		text-align: center;
-		width: 100%;
+		width: 190px;
 		height: 100%;
+		line-height: 30px;
+		padding: 0 5px;
+		color: #ffffff;
+		border: 1px solid @normal;
+		.verticalGradient(center, lighten(@normal, 10%), lighten(@normal, 20%), lighten(@normal, 15%), @normal);
+		.boxShadow(0 1px 1px #4a5aa7,
+					inset 0px 1px 0 rgba(255,255,255, 0.25));
+		.borderRadius(5px);
+		&:before{
+			content: "";
+			display: block;
+			position: absolute;
+			width: 0;
+			height: 0;
+			right: 10px;
+			top: 50%;
+			margin-top: -5px;
+			border-left: 8px solid transparent;
+			border-right: 8px solid transparent;
+			border-top: 10px solid lighten(@hover, 15%);
+		}
 	}
 
 	ul{
@@ -40,18 +69,39 @@ NORMAL
 		top: 100%;
 		opacity: 0;
 		width: 100%;
-		max-height: 150px;
+		max-height: 146px;
 		list-style-type: none;
 		overflow: auto;
+		background: lighten(@normal, 15%);
+		border: 1px solid @normal;
+		border-top: none;
+		.boxSizing();
+		&::-webkit-scrollbar {
+    		width: 10px;
+		}
+		&::-webkit-scrollbar-track {
+    		///-webkit-box-shadow: inset 0 0 6px rgba(255,255,255,0.7);
+		}
+		&::-webkit-scrollbar-thumb {
+    		-webkit-box-shadow: inset 0 0 5px lighten(@hover, 25%);
+		}
+
 		li{
-			background: #810000;
 			display: block;
-			padding: 5px 0;
-			&.selected{
-				background: #055;
+			padding: 5px 0 5px 15px;
+			margin: 0;
+			color: #fff;
+			&.selected:after{
+				content: '\25A3 ';
+				float: right;
+				margin-right: 3px;
+				font-size: 25px;
+				line-height: 15px;
 			}
+			&.selected,
 			&:hover{
-				background: #880055;
+				.verticalGradient(@hover, darken(@hover, 10%));
+				.boxShadow(.5, inset 0 0 3px );
 			}
 		}
 	}

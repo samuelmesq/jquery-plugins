@@ -1,36 +1,83 @@
-/*============================
-NORMAL
+/* ====================================
+= All properties of gradients mixins is from Colorzilla
+= http://www.colorzilla.com/gradient-editor/
+==================================== */
+/* Vertical Gradient
+============================*/
+/* Horizontal Gradient
+============================*/
+/*.cfx(){
+	.clearfix();
+}
+*//* Border Radius
 ============================*/
 * {
   margin: 0;
   padding: 0;
 }
 body {
-  margin: 150px;
+  font-family: Arial, sans-serif;
+  background: #62969b;
+  width: 900px;
+  margin: 15px auto;
 }
 /*============================
 NORMAL
 ============================*/
 .selectbox {
-  background: #069;
-  line-height: 30px;
-  width: 200px;
   position: relative;
   overflow: hidden;
+  float: left;
+  margin-right: 50px;
 }
 .selectbox.active {
-  background: #079;
   z-index: 1;
   overflow: visible;
+}
+.selectbox.active span {
+  background: #262626;
+  -webkit-border-radius: 5px 5px 0 0;
+  -moz-border-radius: 5px 5px 0 0;
+  border-radius: 5px 5px 0 0;
+  border-bottom: none;
 }
 .selectbox.active ul {
   opacity: 1;
 }
 .selectbox span {
   display: block;
-  text-align: center;
-  width: 100%;
+  width: 190px;
   height: 100%;
+  line-height: 30px;
+  padding: 0 5px;
+  color: #ffffff;
+  border: 1px solid #000000;
+  background: #1a1a1a;
+  background: -moz-linear-gradient(top, #1a1a1a 0%, #333333 50%, #262626 0%, #000000 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #1a1a1a), color-stop(50%, #333333), color-stop(0%, #262626), color-stop(100%, #000000));
+  background: -webkit-linear-gradient(top, #1a1a1a 0%, #333333 50%, #262626 0%, #000000 100%);
+  background: -o-linear-gradient(top, #1a1a1a 0%, #333333 50%, #262626 0%, #000000 100%);
+  background: -ms-linear-gradient(top, #1a1a1a 0%, #333333 50%, #262626 0%, #000000 100%);
+  background: linear-gradient(top, #1a1a1a 0%, #333333 50%, #262626 0%, #000000 100%);
+  -webkit-box-shadow: 0 1px 1px #4a5aa7, inset 0px 1px 0 rgba(255, 255, 255, 0.25);
+  -moz-box-shadow: 0 1px 1px #4a5aa7, inset 0px 1px 0 rgba(255, 255, 255, 0.25);
+  box-shadow: 0 1px 1px #4a5aa7, inset 0px 1px 0 rgba(255, 255, 255, 0.25);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+.selectbox span:before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 0;
+  height: 0;
+  right: 10px;
+  top: 50%;
+  margin-top: -5px;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 10px solid #d40085;
 }
 .selectbox ul {
   position: absolute;
@@ -38,20 +85,53 @@ NORMAL
   top: 100%;
   opacity: 0;
   width: 100%;
-  max-height: 150px;
+  max-height: 146px;
   list-style-type: none;
   overflow: auto;
+  background: #262626;
+  border: 1px solid #000000;
+  border-top: none;
+  -webkit-box-sizing: border-box;
+  /* Safari/Chrome, other WebKit */
+
+  -moz-box-sizing: border-box;
+  /* Firefox, other Gecko */
+
+  box-sizing: border-box;
+  /* Opera/IE 8+ */
+
+}
+.selectbox ul::-webkit-scrollbar {
+  width: 10px;
+}
+.selectbox ul::-webkit-scrollbar-thumb {
+  -webkit-box-shadow: inset 0 0 5px #ff08a3;
 }
 .selectbox ul li {
-  background: #810000;
   display: block;
-  padding: 5px 0;
+  padding: 5px 0 5px 15px;
+  margin: 0;
+  color: #fff;
 }
-.selectbox ul li.selected {
-  background: #055;
+.selectbox ul li.selected:after {
+  content: '\25A3 ';
+  float: right;
+  margin-right: 3px;
+  font-size: 25px;
+  line-height: 15px;
 }
+.selectbox ul li.selected,
 .selectbox ul li:hover {
   background: #880055;
+  background: -moz-linear-gradient(top, #880055 0%, #550035 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #880055), color-stop(100%, #550035));
+  background: -webkit-linear-gradient(top, #880055 0%, #550035 100%);
+  background: -o-linear-gradient(top, #880055 0%, #550035 100%);
+  background: -ms-linear-gradient(top, #880055 0%, #550035 100%);
+  background: linear-gradient(top, #880055 0%, #550035 100%);
+  -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.5);
 }
 .selectbox .hidden {
   display: none;
