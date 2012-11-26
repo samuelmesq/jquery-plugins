@@ -9,7 +9,7 @@
 	<form action="process.php" id="form">
 		<div class="selectbox" id="test1">
 			<input type="hidden" name="field01" />
-			<span>Field 01</span>
+			<span>Select 01</span>
 			<ul>
 				<li data-value="option 01">option 01</li>
 				<li data-value="option 02">option 02</li>
@@ -27,7 +27,7 @@
 
 		<div class="selectbox" id="test2">
 			<input type="hidden" name="field02" />
-			<span>Field 02</span>
+			<span>Select 02</span>
 			<ul class="multiple">
 				<li data-value="option 01">option 01</li>
 				<li data-value="option 02">option 02</li>
@@ -45,7 +45,7 @@
 
 		<div class="selectbox" id="test3">
 			<input type="hidden" name="field03" />
-			<span>Field 03</span>
+			<span>Select 03</span>
 			<ul class="multiple">
 				<li data-value="option 1">option 1</li>
 				<li data-value="option 2">option 2</li>
@@ -63,9 +63,15 @@
 	<script type="text/javascript" src="js/checkdown.js"></script>
 	<script type="text/javascript">
 	$(function(){
+		$("#form").submit(function(){
+			$.post('process.php?'+$(this).serialize(), function(data){
+				$("#log").html('<pre>'+ data +'</pre>');	
+			});
+			return false;
+		});
+
 		$('.selectbox').checkdown({
-			'value' : '0'
-			//'beforeShow': function(){}
+			defaultValue : '0'
 		});
 	})
 	</script>

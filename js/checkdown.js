@@ -15,8 +15,9 @@
 	var pluginName = 'checkdown'
 	,	document = window.document
 	,	defaults = {
-			'value': '',
-			'beforeShow': function(){}
+			defaultValue: '',
+			onBeforeShow: function(){},
+			onAfterShow: function(){}
 		};
 
 	function Plugin( element, options ) {
@@ -34,17 +35,17 @@
 
 	Plugin.prototype.init = function(){
 		var obj = this
-		,	options_lenght = obj.opts.length;
+		,	optionsLength = obj.opts.length;
 
-		if( options_lenght > 0 ){
-			$(obj.element).removeClass('disabled');
+		this.options.defaultText = this.label.text();
 
-			for(var i = 0; i < options_lenght; i++) {
+		if( optionsLength > 0 ){
+			for(var i = 0; i < optionsLength; i++) {
 				var opt = $(obj.opts[i]);
 				if( opt.hasClass('selected') ){ obj.updateInputValue() }					
 			}
 		}
-
+		
 		this.initEvents();
 	};
 
@@ -56,12 +57,9 @@
 		// show options
 		$(obj.element).live('click', function(e){
 			var $this = $(this);
-			$('.' + $(obj.element).attr('class')).removeClass('active');
-			if( !$this.hasClass('disabled') ){
-				obj.options.beforeShow();
+			if( !$this.hasClass('disabled') && !$this.hasClass('active') ){
 				$this.removeClass('active').addClass('active');
 			}
-
 			return false;
 		});
 
@@ -72,7 +70,6 @@
 		// add option
 		options.live('click', function(){
 			var me = $(this);
-			
 			me.toggleClass('selected');
 
 			if(!ul.hasClass('multiple'))
@@ -81,6 +78,7 @@
 			obj.updateInputValue();
 		});
 
+		return obj;
 	};
 
 	Plugin.prototype.updateInputValue = function() {
@@ -102,8 +100,8 @@
 			$(obj.input).val(temps.value.toString()).change();
 			$(obj.label).html(temps.text.toString());
 		} else {
-			$(obj.input).val( obj.options.value );
-			$(obj.label).html('Selecione');
+			$(obj.input).val( obj.options.defaultValue );
+			$(obj.label).html(this.options.defaultText);
 		}
 
 	};
