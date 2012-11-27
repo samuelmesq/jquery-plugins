@@ -65,14 +65,12 @@
 	$(function(){
 		$("#form").submit(function(){
 			$.post('process.php?'+$(this).serialize(), function(data){
-				$("#log").html('<pre>'+ data +'</pre>');	
+				$("#log").html('<pre>'+ data +'</pre>');
 			});
 			return false;
 		});
 
-		$('.selectbox').checkdown({
-			defaultValue : '0'
-		});
+		$('.selectbox').checkdown();
 	})
 	</script>
 </body>

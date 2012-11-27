@@ -4,9 +4,10 @@
 	padding: 0;
 }
 @normal: #000;
-@hover: #d4bb00;
+@hover: #159;
+@selected: #18DB66;
 body{
-	font-family: Arial, sans-serif;
+	font-family: Helvetica Arial, sans-serif;
 	background: #62969b;
 	width: 900px;
 	margin: 250px auto 0;
@@ -33,7 +34,7 @@ NORMAL
 			cursor: default;
 		}
 		ul{
-			max-height: 146px;
+			max-height: 169px;
 			opacity: 1;
 			overflow: auto;
 		}
@@ -80,7 +81,6 @@ NORMAL
 		border: 1px solid @normal;
 		border-top: none;
 		.boxSizing();
-		.transition();
 		.borderRadius(0 0 5px 5px);
 		&::-webkit-scrollbar {
     		width: 10px;
@@ -89,27 +89,35 @@ NORMAL
     		///-webkit-box-shadow: inset 0 0 6px rgba(255,255,255,0.7);
 		}
 		&::-webkit-scrollbar-thumb {
-    		-webkit-box-shadow: inset 0 0 10px lighten(@hover, 25%);
+    		-webkit-box-shadow: inset 0 0 10px 2px lighten(@hover, 10%);
     		.borderRadius(5px);
 		}
 
 		li{
 			display: block;
 			padding: 5px 0 5px 15px;
-			margin: 0;
+			margin: 2px;
 			color: #fff;
 			cursor: default;
+			border: 1px solid transparent;
 			.noSelection();
-
-			&.selected:after{
-				content: '\25A3 ';
+			.borderRadius(5px);
+			&:after{
+				content: '\2610';
 				float: right;
-				margin-right: 3px;
+				margin-right: 6px;
 				font-size: 25px;
-				line-height: 15px;
+				line-height: 16px;
 			}
-			&.selected,
+			&.selected{
+				//color: @selected;
+				&:after{
+					content: '\2611 ';
+				}
+			}
+			//&.selected,
 			&:hover{
+				border-color: @normal;
 				.verticalGradient(@hover, darken(@hover, 10%));
 				.boxShadow(.5, inset 0 0 3px );
 			}
