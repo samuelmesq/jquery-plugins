@@ -1,16 +1,3 @@
-/* ====================================
-= All properties of gradients mixins is from Colorzilla
-= http://www.colorzilla.com/gradient-editor/
-==================================== */
-/* Vertical Gradient
-============================*/
-/* Horizontal Gradient
-============================*/
-/*.cfx(){
-	.clearfix();
-}
-*//* Border Radius
-============================*/
 * {
   margin: 0;
   padding: 0;
@@ -133,6 +120,7 @@ NORMAL
   color: #fff;
   cursor: default;
   border: 1px solid transparent;
+  overflow: hidden;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;

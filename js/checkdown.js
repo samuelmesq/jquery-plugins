@@ -16,7 +16,7 @@
 	,	document = window.document
 	,	defaults = {
 			defaultValue: '',
-			defaultText : '',
+			defaultText : null,
 			onBeforeShow: function(){},
 			onAfterShow: function(){}
 		};
@@ -45,7 +45,7 @@
 		var obj = this
 		,	optionsLength = obj.opts.length;
 
-		this.options.defaultText = this.label.text();
+		this.options.defaultText = this.options.defaultText || this.label.text();
 
 		$(obj.element).addClass(this.classes.checkdown);
 
